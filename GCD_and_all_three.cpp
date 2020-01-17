@@ -13,48 +13,52 @@ void print(int a,int b,int choice);
 void printn(int num,int choice);
 int main()
 {
-	cout<<"What you want to get done from this code:\n";
-	cout<<"1.GCD\n";
-	cout<<"2.Fabonacci series\n";
-	cout<<"3.Raising power\n";
-	cout<<"4.Factorial\n";
-	int choice;
-	cin>>choice;
-	int a,b,num;
-	switch(choice)
-	{
-		case 1:
-			{
-				cout<<"Enter the the numbers to find their gcd: ";
-            	cin>>a>>b;
-				print(a,b,choice);
-				break;
-			}
-		case 2:
-			{
-				cout<<"Enter the number upto which the fabonacci series required: ";
-				cin>>num;
-				printn(num,choice);
-				break;
-			}
-		case 3:
-			{
-				cout<<"Enter the number and its power(only positive integers) to get the value: ";
-				cin>>a>>b;
-				print(a,b,choice);
-				break;
-			}
-		case 4:		
-			{
-				cout<<"Enter the number whose factorial is required: ";
-				cin>>num;
-				printn(num,choice);
-				break;
-			}
+	char decide;
+	do{
+		cout<<"What you want to get done from this code:\n";
+		cout<<"1.GCD\n";
+		cout<<"2.Fabonacci series\n";
+		cout<<"3.Raising power\n";
+		cout<<"4.Factorial\n";
+		int choice;
+		cin>>choice;
+		int a,b,num;
+		switch(choice)
+		{
+			case 1:
+				{
+					cout<<"Enter the the numbers to find their gcd: ";
+            		cin>>a>>b;
+					print(a,b,choice);
+					break;
+				}
+			case 2:
+				{
+					cout<<"Enter the number upto which the fabonacci series required: ";
+					cin>>num;
+					printn(num,choice);
+					break;
+				}
+			case 3:
+				{
+					cout<<"Enter the number and its power(only positive integers) to get the value: ";
+					cin>>a>>b;
+					print(a,b,choice);
+					break;
+				}
+			case 4:		
+				{
+					cout<<"Enter the number whose factorial is required: ";
+					cin>>num;
+					printn(num,choice);
+					break;
+				}
 			default:
-			cout<<"Invalid";	
-				
-	}
+				cout<<"Invalid\n";
+		}
+			cout<<"\nDo you want to continue or not (Y/N): ";
+			cin>>decide;				
+	}while(decide=='Y'||decide=='y');
 	return 0;
 }
 void print(int a ,int b,int choice)
@@ -85,11 +89,28 @@ void printn(int num,int choice)
 		case 2:
 			{
 				int t1=0,t2=1;
-				cout<<"The required fabonacci series with recursion is: "<<t1<<t2;
-				cout<<fabrecur(num,t1,t2);
-				cout<<"\nAnd, with iteration is: "<<t1<<t2;
-				fabiter(num);
-				cout<<endl;
+				
+				if(num>2)
+				{
+			    	cout<<"The required fabonacci series with recursion is: "<<t1<<t2;
+					cout<<fabrecur(num,t1,t2);
+					cout<<"\nAnd, with iteration is: "<<t1<<t2;
+					fabiter(num);
+					cout<<endl;
+				}
+				else if(num==1)
+				{
+					cout<<"The required fabonacci series: 0 ";
+				}
+				else if(num==2)
+				{
+					cout<<"The required fabonacci seris: 0 1 ";
+				}
+				else
+				{
+					cout<<"Not valid ";
+				}
+				
 				break;
 			}
 		case 4:	
@@ -107,7 +128,7 @@ int gcdrecur(int a,int b)
 	{
 		throw "Invalid";
 	}
-	if(b==1||b==0)
+	if(b==0)
 	{
 		return a;
 	}
